@@ -1,0 +1,40 @@
+﻿@model ProductVM
+@{
+    ViewBag.Title = "ProductList";
+}
+
+
+<div class="container">
+    <div class="panel panel-primary">
+        <table class="table table-hover">
+            <tr>
+                <th>Ürün Ismi</th>
+                <th>Ürün Fiyatı</th>
+                <th>Ürün Kategorisi</th>
+                <th colspan="2" style="padding-left:100px">İşlemler</th>
+
+            </tr>
+            <tbody>
+            @foreach (Product item in Model.Products)
+              {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.UnitPrice</td>
+                    @if (item.Category==null)
+                    {
+                        <td>Kategorisi yok</td>
+                    }
+                    else
+                    {
+                        <td>@item.Category.CategoryName</td>
+                    }
+
+                    <td>@Html.ActionLink("Güncelle", "UpdateProduct", new { id = item.ProductID }, new { @class = "btn btn-warning" })</td>
+                    <td>@Html.ActionLink("Sil", "DeleteProduct", new { id = item.ProductID }, new { @class = "btn btn-warning" })</td>
+                 </tr>
+              }
+            </tbody>
+        </table>
+    </div>
+</div>
+

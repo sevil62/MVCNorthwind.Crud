@@ -1,0 +1,30 @@
+﻿@model CategoryVM
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+<div class="jumbotron">
+    Kategori Ekleme Sayfasına Hoşgeldiniz
+
+</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+            @using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+            {
+                
+                <div>
+                    @Html.TextAreaFor(x=>x.Category.CategoryName,new {placeholder="Lütfen isminizi giriniz",@class="form-control"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(x => x.Category.Description, new {placeholder="Lütfen Açıklama yazınız",@class="form-control"})
+                </div>
+                <div>
+                    <button class="btn btn-danger">
+                        Ekle
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

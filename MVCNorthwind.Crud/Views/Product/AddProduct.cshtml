@@ -1,0 +1,35 @@
+﻿@model ProductVM
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<div class="jumbotron">
+    <div class="panel panel-primary">
+        @using (Html.BeginForm("AddProduct","Product",FormMethod.Post))
+            {
+          
+                <div>İsim</div>
+                <div>
+                    @Html.TextBoxFor(x=>x.Product.ProductName)
+                </div>
+                <div>Fiyat</div>
+                <div>
+                    @Html.TextBoxFor(x=>x.Product.UnitPrice)
+                </div>
+                <div class="panel panel-body">
+                    Kategori Seçimi
+                </div>
+                <div>
+                    @Html.DropDownListFor(x=>x.Product.CategoryID,new SelectList(Model.Categories,"CategoryID","CategoryName"),"Lütfen Kategori seçiniz")
+                </div>
+                <br />
+                <div>
+                   <button class="btn btn-danger">
+                       Ekle
+                   </button>
+                </div>
+
+            }
+    </div>
+</div>
+
